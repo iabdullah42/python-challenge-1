@@ -49,7 +49,7 @@ menu = {
         "Fried banana": 4.49
     }
 }
-print(menu)
+
 
 # 1. Set up order list. Order list will store a list of dictionaries for
 # menu item name, item price, and quantity ordered
@@ -119,55 +119,55 @@ while place_order:
                         "Price": value
                     }
                     i += 1
-        while True:
+
             # 2. Ask customer to input menu item number
-            menu_items = input("Type menu number to view or q to quit ")
-            if menu_items == 'q':
-                break
+            menu_selection = input("Type menu number: ")
 
             # 3. Check if the customer typed a number
-            if not menu_items.isdigit():
-                print("Invalid input, please enter a number ")
-
+            if menu_selection.isdigit():
 
                 # Convert the menu selection to an integer
-                menu_category = int(menu_category)
-
+                menu_selection = int(menu_selection)
 
                 # 4. Check if the menu selection is in the menu items
-                if int(menu_category) in menu_items.keys():
+                if menu_selection in menu_items.keys():
 
                     # Store the item name as a variable
-                    item_name = menu_items[menu_category]["Item Name"]
-
+                    item_name = menu_items[menu_selection]["Item name"]
 
                     # Ask the customer for the quantity of the menu item
-                    quantity = input(f"How many {menu_category_name} wou you like to order? (Default: 1) ")
-
-
+                    quantity = input(f"What quantity of {item_name} would you like? \n"
+                                     + "(This will default to 1 if number is "
+                                     + "not entered)\n")
+                    
                     # Check if the quantity is a number, default to 1 if not
-                if not quantity.isdigit():
-                    quantity = 1
-                else:
-                    quantity = int(quantity)
+                    if not quantity.isdigit():
+                        quantity = 1
+                    else:
+                        quantity = int(quantity)
 
 
                     # Add the item name, price, and quantity to the order list
                     cart.append({
-                        "Menu Item": item_name,
-                        "Item Price": menu_items[menu_category]["Price"],
-                        "Item Quantity": quantity
-
+                        "Item name": item_name,
+                        "Price": menu_items[menu_selection]["Price"],
+                        "Quantity": quantity
                     })
+                else:
 
+                  
+                    # Tell the customer that their input isn't valid
+                    print("Sorry, that number isn't an option.")
             else:
-                # Tell the customer that their input isn't valid
-                print(f"{menu_category} was not a valid option")
 
+                # Tell the customer they didn't select a menu option
+                print(f"{menu_selection} was not a menu option.")
         else:
+
             # Tell the customer they didn't select a menu option
             print(f"{menu_category} was not a menu option.")
     else:
+
         # Tell the customer they didn't select a number
         print("You didn't select a number.")
 
@@ -177,13 +177,13 @@ while place_order:
 
         # 5. Check the customer's input
         if keep_ordering.isdigit():
-
+                
                 # Keep ordering
                 keep_ordering = int(keep_ordering)
 
                 # Exit the keep ordering question loop
                 break
-
+        
                 # Complete the order
 
                 # Since the customer decided to stop ordering, thank them for
@@ -191,33 +191,19 @@ while place_order:
 
                 # Exit the keep ordering question loop
 
-
                 # Tell the customer to try again
-
 
 # Print out the customer's order
 print("This is what we are preparing for you.\n")
-
 # Uncomment the following line to check the structure of the order
 #print(order)
-
 print("Item name                 | Price  | Quantity")
 print("--------------------------|--------|----------")
-
 # 6. Loop through the items in the customer's order
-
     # 7. Store the dictionary items as variables
-
-
     # 8. Calculate the number of spaces for formatted printing
-
-
     # 9. Create space strings
-
-
     # 10. Print the item name, price, and quantity
-
-
 # 11. Calculate the cost of the order using list comprehension
 # Multiply the price by quantity for each item in the order list, then sum()
 # and print the prices.

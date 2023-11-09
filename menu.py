@@ -191,19 +191,34 @@ while place_order:
 
                 # Exit the keep ordering question loop
 
+
                 # Tell the customer to try again
+
 
 # Print out the customer's order
 print("This is what we are preparing for you.\n")
+
 # Uncomment the following line to check the structure of the order
 #print(order)
+
 print("Item name                 | Price  | Quantity")
 print("--------------------------|--------|----------")
+
 # 6. Loop through the items in the customer's order
+
     # 7. Store the dictionary items as variables
+
+
     # 8. Calculate the number of spaces for formatted printing
+
+
     # 9. Create space strings
+
+
     # 10. Print the item name, price, and quantity
+
+
 # 11. Calculate the cost of the order using list comprehension
+
 # Multiply the price by quantity for each item in the order list, then sum()
 # and print the prices.

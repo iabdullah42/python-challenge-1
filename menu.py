@@ -174,51 +174,62 @@ while place_order:
     while True:
         # Ask the customer if they would like to order anything else
         keep_ordering = input("Would you like to keep ordering? (Y)es or (N)o ")
+        print(keep_ordering)
 
         # 5. Check the customer's input
-        if keep_ordering.isdigit():
+        if keep_ordering.lower() =="y":
                 
-                # Keep ordering
-                keep_ordering = int(keep_ordering)
-
-                # Exit the keep ordering question loop
-                break
+                
+            # Keep ordering
+            print("What would you like to order next?")
+            break
+            
+    
+            # Exit the keep ordering question loop
+        if keep_ordering.lower() =="n":
+            print("Thank you for your order.")
+            place_order = False
+            break
+            
+        else:
+                print("Please try again.")
+                                   
         
-                # Complete the order
-
-                # Since the customer decided to stop ordering, thank them for
-                # their order
-
-                # Exit the keep ordering question loop
-
-
-                # Tell the customer to try again
-
 
 # Print out the customer's order
 print("This is what we are preparing for you.\n")
 
 # Uncomment the following line to check the structure of the order
-#print(order)
+print(cart)
 
 print("Item name                 | Price  | Quantity")
 print("--------------------------|--------|----------")
 
 # 6. Loop through the items in the customer's order
-
+for item in cart:
     # 7. Store the dictionary items as variables
+    item_name = item["Item name"]
+    price = item["Price"]
+    quantity = item["Quantity"]
 
 
     # 8. Calculate the number of spaces for formatted printing
-
+    num_item_spaces = 30 - len(item_name)
+    item_spaces = " " * num_item_spaces
 
     # 9. Create space strings
+    price_str = f"${price:.2f}"
+    quantity_str = str(quantity)
 
 
     # 10. Print the item name, price, and quantity
+    print(f"{item_name}{item_spaces}| {price_str} | {quantity_str}")
 
 
 # 11. Calculate the cost of the order using list comprehension
+order_prices = [item["Price"] * item["Quantity"] for item in cart]
 
 # Multiply the price by quantity for each item in the order list, then sum()
 # and print the prices.
+total_cost = sum(order_prices)
+print(f"Total cost: ${total_cost:.2f}")
